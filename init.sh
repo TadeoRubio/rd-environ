@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo -i
 dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 dnf update -y

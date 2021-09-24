@@ -7,6 +7,11 @@ resource "aws_instance" "ec2-bastion-1" {
     aws_security_group.sg1-open-terraform.id
   ]
   key_name = aws_key_pair.kp-lpic-1.key_name
+
+  metadata_options {
+    http_tokens = "required"
+    http_endpoint = "enabled"
+  }
   tags = {
     "Name" = "Bastion"
     "OS"   = "RHEL 8"
@@ -23,7 +28,7 @@ resource "aws_eip" "eip_lpic-1" {
     "use"="lpic-1"
   }
 }
-
+/*
 resource "aws_instance" "ec2-internal-2" {
   ami                         = "ami-096fda3c22c1c990a"
   instance_type               = "t2.micro"
@@ -57,7 +62,8 @@ resource "aws_instance" "ec2-internal-3" {
   }
    user_data = file("init.sh")
 }
-
+*/
+///////////////////////////////////////////
 /*
 resource "aws_eip" "eip_lpic-2" {
   vpc = true
