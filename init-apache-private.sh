@@ -25,7 +25,14 @@ dnf install -y neofetch
 ## end neofetch
 ## Disable SELinux
 setenforce 0
-sed s/SELINUX=enforcing/SELINUX=disabled/g /etc/selinux/config
+sed s/SELINUX=enforcing/SELINUX=disabled/g /etc/selinux/config > config && mv /etc/selinux/config /etc/selinux/config.bak && mv config /etc/selinux/
 ## end Disable SELinux
+## apache
+dnf install -y httpd
+# echo '<!DOCTYPE html><html><h1>Sample</h1><br /><br /><h2>Other sample...server2</h2></html>' > /var/www/html/index.html
+hostname -f >> /var/www/html/index.html
+systemctl start httpd
+systemctl enable httpd
+## end apache
 echo "alias ll='ls -lah'" >> /etc/profile
 echo "neofetch" >> /etc/profile
